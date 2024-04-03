@@ -1,4 +1,5 @@
 abstract class Routes {
   //static const HomeRoute = '/';
-  static const GroupsRoute = '/GroupsWidget';
+  static const GroupsRoute = '/groups';
+  static const GroupFormRoute = '/groups/groupForm';
 }

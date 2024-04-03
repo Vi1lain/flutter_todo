@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
+import '../app/routes.dart';
+
 class GroupsWidget extends StatelessWidget {
   const GroupsWidget({super.key});
+
+  void showForm(BuildContext context) {
+    Navigator.of(context).pushNamed(Routes.GroupFormRoute);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +25,7 @@ class GroupsWidget extends StatelessWidget {
       ),
       body: const _GroupListWidget(),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => null,
+        onPressed: () => showForm(context),
         child: const Icon(Icons.add),
       ),
     ));
@@ -77,9 +83,7 @@ class _GroupListRowWidget extends StatelessWidget {
       child: ListTile(
         title: Text("text =$indexInList"),
         trailing: const Icon(Icons.chevron_right),
-        onTap: () {
-
-        },
+        onTap: () {},
       ),
     );
   }
