@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_todo/widgets/groups/groups_widget_model.dart';
+import 'group_form_widget_model.dart';
 
 
 class GroupFormWidget extends StatefulWidget {
@@ -10,18 +10,19 @@ class GroupFormWidget extends StatefulWidget {
 }
 
 class _GroupFormWidgetState extends State<GroupFormWidget> {
-  final model = GroupsWidgetModel();
+  final _model = GroupFormWidgetModel();
   @override
   Widget build(BuildContext context) {
-    return GroupsWidgetModelProvider(model: model,
-    child:  _GroupFormWidgetBody());
+    return GroupFormWidgetModelProvider(model: _model,
+    child:   _GroupFormWidgetBody());
   }
 }
 
 
 
 class _GroupFormWidgetBody extends StatelessWidget {
-  const _GroupFormWidgetBody({super.key});
+
+  const _GroupFormWidgetBody({super.key, });
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +35,7 @@ class _GroupFormWidgetBody extends StatelessWidget {
           style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
       ),floatingActionButton: FloatingActionButton(
-      onPressed: () {},
+      onPressed: ()=>GroupFormWidgetModelProvider.of(context).model.saveGroup(context),
       child: const Icon(Icons.done),
     ),
       body: Center(
@@ -54,10 +55,13 @@ class _GroupNameWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const TextField(autofocus: true,
+    final model = GroupFormWidgetModelProvider.of(context).model;
+    return  TextField(autofocus: true,
       decoration: InputDecoration(hintText: "Имя группы",
           contentPadding: EdgeInsets.symmetric(horizontal: 15),
           border: OutlineInputBorder()),
+      onChanged: (text)=>model.groupName=text,
+      onEditingComplete: ()=>model.saveGroup(context),
     );
   }
 }
