@@ -29,7 +29,6 @@ class _GroupFormWidgetBody extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        backgroundColor: Colors.amber,
         title: const Text(
           "Add Group",
           style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
